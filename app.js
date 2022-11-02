@@ -9,31 +9,30 @@
 "use strict";
 
 // * Load the core HTTP module so that we can create a server
-const http = require('http');
+const http = require("http");
 
 // * Load the file helper functions with object destructuring from utils
-const {loadProfile, loadStatic} = require("./utils/filerHelper.js");
+const {loadProfile, loadStatic} = require("./utils/fileHelper.js");
 
 // hostname and port are needed in order for the http server to listen for requests
 const hostname = "127.0.0.1";
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Initialize our server
 const server = http.createServer((req, res) => {
   // branch based on the URL of the request
+  res.setHeader("Content-Type", "text/html");
   switch (req.url) {
     // Home page
     // * Add a case that responds to / which sends "Hello Node Server" with a 200
     case "/":
         console.log("Home Page");
-        res.setHeader("Content-Type", "text/plain");
         res.statusCode = 200;
-        res.end("Hello Node Server");
+        res.end("<p>Hello Node Server</p>");
       
     // Profiles Listing Page
     // * Add a case that responds to /profiles which sends "Profiles List" with a 200
     case "/profiles":
-        res.setHeader("Content-Type", "text/html");
         res.statusCode = 200;
         res.end("<h1>Profiles List</h1>");
         break;
@@ -68,14 +67,13 @@ const server = http.createServer((req, res) => {
         loadStatic(req, res);
       } else {
         res.statusCode = 404;
-        res.setHeader("Content-Type", "text/plain");
-        res.end("File not found");
+        res.end("<p>File not found</p>");
       }
   }
 });
 
 // * Set the HTTP server to listen on port, hostname as declared above
 server.listen(port, hostname, () => {
-  console.log(`Serving is running at http://${hostname}.${port}/`);
+  console.log(`Serving is running at http://${hostname}:${port}/`);
 });
 
