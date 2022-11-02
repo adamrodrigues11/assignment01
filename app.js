@@ -9,13 +9,14 @@
 "use strict";
 
 // * Load the core HTTP module so that we can create a server
+const http = require('http');
 
 // * Load the file helper functions with object destructuring from utils
+const {loadProfile, loadStatic} = require("./utils/filerHelper.js");
 
 // hostname and port are needed in order for the http server to listen for requests
-// * declare variables for these using 127.0.0.1 for hostname
-
-// * process.env.PORT will be defined by some hosts.  If undefined, use 3000.
+const hostname = "127.0.0.1";
+const port = 3000;
 
 // Initialize our server
 const server = http.createServer((req, res) => {
@@ -23,7 +24,7 @@ const server = http.createServer((req, res) => {
   switch (req.url) {
     // Home page
     // * Add a case that responds to / which sends "Hello Node Server" with a 200
-
+    case :
     // Profiles Listing Page
     // * Add a case that responds to /profiles which sends "Profiles List" with a 200
 
