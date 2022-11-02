@@ -24,7 +24,11 @@ const server = http.createServer((req, res) => {
   switch (req.url) {
     // Home page
     // * Add a case that responds to / which sends "Hello Node Server" with a 200
-    case :
+  case "/":
+      console.log("Home Page");
+      res.setHeader("Content-Type", "text/html");
+      res.writeHead(200);
+      res.end("Home Page");
     // Profiles Listing Page
     // * Add a case that responds to /profiles which sends "Profiles List" with a 200
 
