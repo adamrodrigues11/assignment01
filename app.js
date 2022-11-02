@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
         console.log("Home Page");
         res.statusCode = 200;
         res.end("<p>Hello Node Server</p>");
+        break;
       
     // Profiles Listing Page
     // * Add a case that responds to /profiles which sends "Profiles List" with a 200
