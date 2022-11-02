@@ -1,0 +1,31 @@
+{
+  "name": "assignment01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamrodrigues11/assignment01.git"
+  },
+  "author": "Adam Rodrigues",
+  "contributors": [
+    {
+      "name": "Catherine Addison"
+    },
+    {
+      "name": "Michael Yamauchi"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamrodrigues11/assignment01/issues"
+  },
+  "homepage": "https://github.com/adamrodrigues11/assignment01#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
