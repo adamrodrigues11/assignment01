@@ -24,21 +24,40 @@ const server = http.createServer((req, res) => {
   switch (req.url) {
     // Home page
     // * Add a case that responds to / which sends "Hello Node Server" with a 200
-  case "/":
-      console.log("Home Page");
-      res.setHeader("Content-Type", "text/html");
-      res.writeHead(200);
-      res.end("Home Page");
+    case "/":
+        console.log("Home Page");
+        res.setHeader("Content-Type", "text/plain");
+        res.statusCode = 200;
+        res.end("Hello Node Server");
+      
     // Profiles Listing Page
     // * Add a case that responds to /profiles which sends "Profiles List" with a 200
-
+    case "/profiles":
+        res.setHeader("Content-Type", "text/html");
+        res.statusCode = 200;
+        res.end("<h1>Profiles List</h1>");
+        break;
+    
     //   Individual Profile
     case "/profiles/josh":
-      console.log("Josh is here.  Loading profile...");
-      loadProfile(req, res);
-      break;
+        console.log("Josh is here.  Loading profile...");
+        loadProfile(req, res);
+        break;
 
-    /* Add in a cases pointing at your personal profiles below */
+    case "/profiles/adam":
+        console.log("Adam is here.  Loading profile...");
+        loadProfile(req, res);
+        break;
+
+    case "/profiles/cat":
+        console.log("Cat is here.  Loading profile...");
+        loadProfile(req, res);
+        break;
+      
+    case "/profiles/mike":
+        console.log("Mike is here.  Loading profile...");
+        loadProfile(req, res);
+        break;
 
     //   Unhandled URL
     default:
@@ -48,12 +67,15 @@ const server = http.createServer((req, res) => {
       if (validStaticTypes.includes(pathSegments[3])) {
         loadStatic(req, res);
       } else {
-        // * set statusCode to 404
-        // * use res.setHeader to specify "Content-Type", "text/html"
-        // * send "File not found"
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "text/plain");
+        res.end("File not found");
       }
   }
 });
 
 // * Set the HTTP server to listen on port, hostname as declared above
-// * Within the callback console.log  `Server running at http://${hostname}:${port}/`
+server.listen(port, hostname, () => {
+  console.log(`Serving is running at http://${hostname}.${port}/`);
+});
+
